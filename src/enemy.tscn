@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://clnqs2vs81j4r"]
+
+[ext_resource type="Script" path="res://src/enemy.gd" id="1_jenyl"]
+[ext_resource type="Texture2D" uid="uid://816qvyfdpw3q" path="res://assets/human1.png" id="2_s0v5v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0dya"]
+size = Vector2(10, 31)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dcdgv"]
+radius = 149.054
+
+[sub_resource type="Animation" id="Animation_a4fol"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2dokl"]
+resource_name = "TakeDamage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5i2xh"]
+_data = {
+"RESET": SubResource("Animation_a4fol"),
+"TakeDamage": SubResource("Animation_2dokl")
+}
+
+[node name="enemy" type="RigidBody2D"]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 23
+input_pickable = true
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+linear_damp = 45.041
+script = ExtResource("1_jenyl")
+_max_speed = 500.0
+_slowing_distance = 150.0
+_stopping_distance_threshold = 75.0
+_health = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_w0dya")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s0v5v")
+
+[node name="Attack_Cooldown" type="Timer" parent="."]
+
+[node name="Retreat_Zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Retreat_Zone"]
+shape = SubResource("CircleShape2D_dcdgv")
+debug_color = Color(0.980392, 0, 0.376471, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5i2xh")
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="timeout" from="Attack_Cooldown" to="." method="_on_attack_cooldown_timeout"]

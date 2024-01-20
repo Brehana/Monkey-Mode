@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://pr70xi5qkwwj"]
+
+[ext_resource type="Shader" path="res://src/TeamColorMask.gdshader" id="1_lnq6j"]
+[ext_resource type="Texture2D" uid="uid://ca3gvy68jd6g8" path="res://assets/bluePiece.png" id="2_p7spq"]
+[ext_resource type="Script" path="res://src/blood_splatter.gd" id="3_f65ho"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4wdx"]
+shader = ExtResource("1_lnq6j")
+shader_parameter/masking_color = Color(0.372549, 0.803922, 0.894118, 1)
+shader_parameter/replacement_color = Color(0.886275, 0, 0, 1)
+shader_parameter/masking_range = 0.1
+
+[node name="blood_splatter" type="CPUParticles2D"]
+z_index = -2
+material = SubResource("ShaderMaterial_g4wdx")
+amount = 200
+explosiveness = 1.0
+randomness = 0.13
+lifetime_randomness = 0.03
+texture = ExtResource("2_p7spq")
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+scale_amount_min = 0.1
+scale_amount_max = 0.25
+hue_variation_max = 0.06
+script = ExtResource("3_f65ho")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]

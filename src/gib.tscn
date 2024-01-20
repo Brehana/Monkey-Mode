@@ -1,0 +1,139 @@
+[gd_scene load_steps=12 format=3 uid="uid://j6olkcpv1tib"]
+
+[ext_resource type="Script" path="res://src/Gib.gd" id="1_wuw20"]
+[ext_resource type="Texture2D" uid="uid://db2sf7drn06oi" path="res://assets/human_gib_head.png" id="2_mnilc"]
+[ext_resource type="Texture2D" uid="uid://b3bu6jwuvkhe6" path="res://assets/Dot.png" id="3_g2n72"]
+[ext_resource type="Texture2D" uid="uid://brp627rshea8y" path="res://assets/human_gib_torso.png" id="4_1qi5d"]
+[ext_resource type="Texture2D" uid="uid://b27w3vri3hav1" path="res://assets/human_gib_legs.png" id="5_etm1i"]
+[ext_resource type="AudioStream" uid="uid://v8oikppwb0rt" path="res://assets/audio/screamandchoke.wav" id="6_ku3wo"]
+[ext_resource type="AudioStream" uid="uid://d4egwhsgo0ng0" path="res://assets/audio/WilhelmScream.wav" id="7_dnbag"]
+[ext_resource type="AudioStream" uid="uid://bo4tmdwlc0cay" path="res://assets/audio/Humi1013.wav" id="8_cn0xw"]
+[ext_resource type="AudioStream" uid="uid://c7coc0od2lo7o" path="res://assets/audio/AAAGH1.wav" id="9_0aedl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jcr1d"]
+radius = 5.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mwccl"]
+streams_count = 4
+stream_0/stream = ExtResource("6_ku3wo")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_dnbag")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("8_cn0xw")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("9_0aedl")
+stream_3/weight = 1.0
+
+[node name="Gib" type="Node2D"]
+script = ExtResource("1_wuw20")
+
+[node name="Head" type="RigidBody2D" parent="."]
+position = Vector2(0, -18)
+collision_layer = 65
+collision_mask = 87
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+shape = SubResource("CircleShape2D_jcr1d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Head"]
+texture = ExtResource("2_mnilc")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="Head"]
+show_behind_parent = true
+position = Vector2(-1, 25)
+amount = 16
+explosiveness = 0.16
+randomness = 0.99
+texture = ExtResource("3_g2n72")
+direction = Vector2(0, 1)
+spread = 31.62
+gravity = Vector2(0, 0)
+initial_velocity_min = 54.06
+initial_velocity_max = 67.57
+scale_amount_min = 0.0
+scale_amount_max = 0.3
+color = Color(0.847059, 0, 0, 1)
+
+[node name="Torso" type="RigidBody2D" parent="."]
+collision_mask = 87
+gravity_scale = 0.0
+linear_damp = 5.459
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Torso"]
+shape = SubResource("CircleShape2D_jcr1d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Torso"]
+texture = ExtResource("4_1qi5d")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Torso"]
+show_behind_parent = true
+position = Vector2(0, -6)
+amount = 16
+explosiveness = 0.16
+randomness = 0.99
+texture = ExtResource("3_g2n72")
+direction = Vector2(0, -1)
+spread = 31.62
+gravity = Vector2(0, 0)
+initial_velocity_min = 54.06
+initial_velocity_max = 67.57
+scale_amount_min = 0.0
+scale_amount_max = 0.3
+color = Color(0.847059, 0, 0, 1)
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="Torso"]
+show_behind_parent = true
+position = Vector2(-1, 7)
+amount = 16
+explosiveness = 0.16
+randomness = 0.99
+texture = ExtResource("3_g2n72")
+direction = Vector2(0, 1)
+spread = 31.62
+gravity = Vector2(0, 0)
+initial_velocity_min = 54.06
+initial_velocity_max = 67.57
+scale_amount_min = 0.0
+scale_amount_max = 0.3
+color = Color(0.847059, 0, 0, 1)
+
+[node name="Legs" type="RigidBody2D" parent="."]
+position = Vector2(0, 18)
+collision_mask = 87
+gravity_scale = 0.0
+linear_damp = 5.459
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Legs"]
+shape = SubResource("CircleShape2D_jcr1d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Legs"]
+texture = ExtResource("5_etm1i")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Legs"]
+show_behind_parent = true
+position = Vector2(0, -6)
+amount = 16
+explosiveness = 0.16
+randomness = 0.99
+texture = ExtResource("3_g2n72")
+direction = Vector2(0, -1)
+spread = 31.62
+gravity = Vector2(0, 0)
+initial_velocity_min = 54.06
+initial_velocity_max = 67.57
+scale_amount_min = 0.0
+scale_amount_max = 0.3
+color = Color(0.847059, 0, 0, 1)
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[node name="Screams" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 18)
+stream = SubResource("AudioStreamRandomizer_mwccl")
+autoplay = true
+max_distance = 750.0
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

@@ -1,0 +1,179 @@
+[gd_scene load_steps=9 format=3 uid="uid://k4warfdubc8"]
+
+[ext_resource type="PackedScene" uid="uid://bn1witksaoc2t" path="res://src/monkey.tscn" id="1_d8xew"]
+[ext_resource type="PackedScene" uid="uid://h0y4c7icty7v" path="res://src/player_character.tscn" id="3_5l85u"]
+[ext_resource type="PackedScene" uid="uid://bvkx867jv8vrm" path="res://src/forest.tscn" id="5_o1q1g"]
+[ext_resource type="PackedScene" uid="uid://n4cdfgdjgkwg" path="res://src/spawn_zone.tscn" id="6_x0o1w"]
+[ext_resource type="PackedScene" uid="uid://cvdk5gxtoww8g" path="res://src/tree.tscn" id="7_ehk4l"]
+[ext_resource type="PackedScene" uid="uid://bj2qutvf5knp2" path="res://src/monkey_spawn_point.tscn" id="8_ooaww"]
+[ext_resource type="AudioStream" uid="uid://eoyojt03fou6" path="res://assets/audio/soft-rain-ambient-111154.mp3" id="8_pqjaa"]
+[ext_resource type="Texture2D" uid="uid://b3bu6jwuvkhe6" path="res://assets/Dot.png" id="8_t16r6"]
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+
+[node name="monkey" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1002, 1103)
+
+[node name="monkey2" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(890, 1016)
+
+[node name="monkey3" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(992, 1029)
+
+[node name="monkey4" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1653, 815)
+
+[node name="monkey5" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1585, 804)
+
+[node name="monkey6" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1339, 1222)
+
+[node name="monkey7" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1485, 1216)
+
+[node name="monkey8" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1468, 1167)
+
+[node name="monkey9" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1386, 1264)
+
+[node name="monkey10" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1359, 1166)
+
+[node name="monkey11" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1677, 775)
+
+[node name="monkey12" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1590, 748)
+
+[node name="monkey13" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1303, 740)
+
+[node name="monkey14" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1242, 752)
+
+[node name="monkey15" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1226, 684)
+
+[node name="monkey16" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(1183, 734)
+
+[node name="monkey17" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(503, 602)
+
+[node name="monkey18" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(506, 524)
+
+[node name="monkey19" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(435, 561)
+
+[node name="monkey20" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(842, 636)
+
+[node name="monkey21" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(766, 599)
+
+[node name="monkey22" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(781, 675)
+
+[node name="monkey23" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(691, 636)
+
+[node name="monkey24" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(928, 1121)
+
+[node name="monkey25" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(855, 1107)
+
+[node name="monkey26" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(552, 1071)
+
+[node name="monkey27" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(515, 1174)
+
+[node name="monkey28" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(479, 1073)
+
+[node name="monkey29" parent="." instance=ExtResource("1_d8xew")]
+position = Vector2(435, 1160)
+
+[node name="player_character" parent="." instance=ExtResource("3_5l85u")]
+position = Vector2(1077, 945)
+
+[node name="forest" parent="." instance=ExtResource("5_o1q1g")]
+
+[node name="spawn_point" parent="." instance=ExtResource("6_x0o1w")]
+position = Vector2(2017, 916)
+
+[node name="spawn_point2" parent="." instance=ExtResource("6_x0o1w")]
+position = Vector2(61, 802)
+
+[node name="spawn_point3" parent="." instance=ExtResource("6_x0o1w")]
+position = Vector2(973, 153)
+
+[node name="spawn_point4" parent="." instance=ExtResource("6_x0o1w")]
+position = Vector2(1077, 1601)
+
+[node name="Tree" parent="." instance=ExtResource("7_ehk4l")]
+position = Vector2(501, 567)
+scale = Vector2(2.4375, 2.61111)
+
+[node name="Tree2" parent="." instance=ExtResource("7_ehk4l")]
+position = Vector2(775, 634)
+scale = Vector2(2.4375, 2.61111)
+
+[node name="Tree3" parent="." instance=ExtResource("7_ehk4l")]
+position = Vector2(502, 1124)
+scale = Vector2(3.5625, 4.53889)
+
+[node name="Tree4" parent="." instance=ExtResource("7_ehk4l")]
+position = Vector2(925, 1071.13)
+scale = Vector2(2.59375, 3.29167)
+
+[node name="Tree5" parent="." instance=ExtResource("7_ehk4l")]
+position = Vector2(1413, 1206)
+scale = Vector2(2.59375, 3.29167)
+
+[node name="Tree6" parent="." instance=ExtResource("7_ehk4l")]
+position = Vector2(1630, 772)
+scale = Vector2(2.59375, 3.29167)
+
+[node name="Tree7" parent="." instance=ExtResource("7_ehk4l")]
+position = Vector2(1250, 723)
+scale = Vector2(3.21875, 4.04584)
+
+[node name="monkey_spawn_point" parent="." instance=ExtResource("8_ooaww")]
+position = Vector2(-44, 803)
+scale = Vector2(0.240005, 0.240005)
+
+[node name="monkey_spawn_point2" parent="." instance=ExtResource("8_ooaww")]
+position = Vector2(1086, 1714)
+scale = Vector2(0.240005, 0.240005)
+
+[node name="monkey_spawn_point3" parent="." instance=ExtResource("8_ooaww")]
+position = Vector2(2114, 917)
+scale = Vector2(0.240005, 0.240005)
+
+[node name="monkey_spawn_point4" parent="." instance=ExtResource("8_ooaww")]
+position = Vector2(989, 63)
+scale = Vector2(0.240005, 0.240005)
+
+[node name="Rain" type="CPUParticles2D" parent="."]
+position = Vector2(1022, 1)
+amount = 256
+lifetime = 2.0
+lifetime_randomness = 1.0
+texture = ExtResource("8_t16r6")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+scale_amount_min = 0.0
+scale_amount_max = 0.5
+color = Color(0.596078, 0.788235, 0.792157, 1)
+
+[node name="Ambience" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_pqjaa")
+volume_db = -0.071
+autoplay = true
+max_distance = 5000.0

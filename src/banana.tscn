@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://igc0tklp4n1n"]
+
+[ext_resource type="Texture2D" uid="uid://mv0k3srgb10d" path="res://assets/banana.png" id="1_s15d0"]
+[ext_resource type="Script" path="res://src/banana.gd" id="1_xi30q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4e51l"]
+radius = 14.0357
+
+[node name="banana" type="RigidBody2D"]
+collision_layer = 32
+collision_mask = 17
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+can_sleep = false
+linear_damp = 5.454
+script = ExtResource("1_xi30q")
+
+[node name="Banana" type="Sprite2D" parent="."]
+position = Vector2(8, -7)
+texture = ExtResource("1_s15d0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4e51l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

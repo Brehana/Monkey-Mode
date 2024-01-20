@@ -1,0 +1,141 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvkx867jv8vrm"]
+
+[ext_resource type="Texture2D" uid="uid://de1a7xwjlxgf8" path="res://assets/forest_floor.png" id="1_bp54h"]
+[ext_resource type="Texture2D" uid="uid://dmhf5ji8x1yyl" path="res://assets/forest_trunks.png" id="2_1jn0y"]
+[ext_resource type="Texture2D" uid="uid://bbp7gxlas3hhl" path="res://assets/forest_canopy.png" id="3_6ofx6"]
+
+[sub_resource type="Animation" id="Animation_581cc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ForestTrunks/ForestCanopy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.752941)]
+}
+
+[sub_resource type="Animation" id="Animation_i5grr"]
+resource_name = "forest"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ForestTrunks/ForestCanopy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.752941), Color(1, 1, 1, 0.360784), Color(1, 1, 1, 0.752941)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ForestTrunks:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.788235), Color(1, 1, 1, 1), Color(1, 1, 1, 0.756863)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4fugu"]
+_data = {
+"RESET": SubResource("Animation_581cc"),
+"forest": SubResource("Animation_i5grr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwuby"]
+size = Vector2(250.451, 84.0362)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syort"]
+size = Vector2(88.266, 155.123)
+
+[node name="forest" type="Node2D"]
+
+[node name="ForestFloor" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(1058.5, 787.75)
+scale = Vector2(3.88419, 3.97103)
+texture = ExtResource("1_bp54h")
+
+[node name="ForestTrunks" type="Sprite2D" parent="ForestFloor"]
+z_index = 3
+z_as_relative = false
+position = Vector2(-2.50822, -9.62262)
+texture = ExtResource("2_1jn0y")
+
+[node name="ForestCanopy" type="Sprite2D" parent="ForestFloor/ForestTrunks"]
+modulate = Color(1, 1, 1, 0.752941)
+z_index = 4
+z_as_relative = false
+position = Vector2(3.05176e-05, 1.06497)
+texture = ExtResource("3_6ofx6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ForestFloor"]
+autoplay = "forest"
+libraries = {
+"": SubResource("AnimationLibrary_4fugu")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ForestFloor"]
+position = Vector2(-2.50821, -8.55768)
+collision_layer = 16
+collision_mask = 111
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForestFloor/StaticBody2D"]
+position = Vector2(139.602, -141.466)
+shape = SubResource("RectangleShape2D_jwuby")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="ForestFloor/StaticBody2D"]
+position = Vector2(20.4012, -226.079)
+shape = SubResource("RectangleShape2D_jwuby")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ForestFloor/StaticBody2D"]
+position = Vector2(-167.798, 214.612)
+shape = SubResource("RectangleShape2D_jwuby")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ForestFloor/StaticBody2D"]
+position = Vector2(193.153, 213.353)
+shape = SubResource("RectangleShape2D_jwuby")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="ForestFloor/StaticBody2D"]
+position = Vector2(19.6288, 299.477)
+shape = SubResource("RectangleShape2D_jwuby")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ForestFloor/StaticBody2D"]
+position = Vector2(-175.521, -142.726)
+shape = SubResource("RectangleShape2D_jwuby")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="ForestFloor/StaticBody2D"]
+position = Vector2(241.961, -81.7841)
+shape = SubResource("RectangleShape2D_syort")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="ForestFloor/StaticBody2D"]
+position = Vector2(330.633, 31.2848)
+shape = SubResource("RectangleShape2D_syort")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="ForestFloor/StaticBody2D"]
+position = Vector2(240.782, 159.967)
+shape = SubResource("RectangleShape2D_syort")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="ForestFloor/StaticBody2D"]
+position = Vector2(-239.221, -115.528)
+shape = SubResource("RectangleShape2D_syort")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="ForestFloor/StaticBody2D"]
+position = Vector2(-328.706, -1.70414)
+shape = SubResource("RectangleShape2D_syort")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="ForestFloor/StaticBody2D"]
+position = Vector2(-240.399, 126.222)
+shape = SubResource("RectangleShape2D_syort")

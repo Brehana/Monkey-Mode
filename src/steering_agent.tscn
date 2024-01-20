@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://1iveelox2ni4"]
+
+[ext_resource type="Script" path="res://src/steering_agent.gd" id="1_5mc7k"]
+[ext_resource type="Shader" path="res://src/TeamColorMask.gdshader" id="2_e7cpv"]
+[ext_resource type="Texture2D" uid="uid://ca3gvy68jd6g8" path="res://assets/bluePiece.png" id="3_s7n5n"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iocqa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4eea"]
+shader = ExtResource("2_e7cpv")
+shader_parameter/masking_color = Color(0.372549, 0.803922, 0.894118, 1)
+shader_parameter/replacement_color = Color(0.752941, 0.101961, 0.341176, 1)
+shader_parameter/masking_range = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g08h3"]
+radius = 8.0
+
+[node name="SteeringAgent" type="RigidBody2D"]
+inertia = 2.42
+physics_material_override = SubResource("PhysicsMaterial_iocqa")
+gravity_scale = 0.0
+linear_damp = 23.203
+script = ExtResource("1_5mc7k")
+
+[node name="BaseSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_w4eea")
+texture = ExtResource("3_s7n5n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g08h3")

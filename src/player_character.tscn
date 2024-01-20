@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://h0y4c7icty7v"]
+
+[ext_resource type="PackedScene" uid="uid://bn1witksaoc2t" path="res://src/monkey.tscn" id="1_xccu5"]
+[ext_resource type="Script" path="res://src/player_character.gd" id="2_nq5g8"]
+[ext_resource type="Shader" path="res://src/TeamColorMask.gdshader" id="3_7rep4"]
+[ext_resource type="Texture2D" uid="uid://6n84h4xyjugb" path="res://assets/monkey_active.png" id="4_ay3ix"]
+[ext_resource type="PackedScene" uid="uid://b3gisrugybeyp" path="res://src/UI.tscn" id="4_glqtp"]
+[ext_resource type="Texture2D" uid="uid://brp627rshea8y" path="res://assets/human_gib_torso.png" id="5_j55q2"]
+[ext_resource type="Texture2D" uid="uid://db2sf7drn06oi" path="res://assets/human_gib_head.png" id="6_e5di4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6xlxr"]
+shader = ExtResource("3_7rep4")
+shader_parameter/masking_color = Color(0.721569, 0.458824, 0.0392157, 1)
+shader_parameter/replacement_color = Color(0.894118, 0.258824, 0.321569, 1)
+shader_parameter/masking_range = 0.0
+
+[node name="player_character" instance=ExtResource("1_xccu5")]
+collision_layer = 3
+collision_mask = 16
+input_pickable = false
+script = ExtResource("2_nq5g8")
+_max_speed = 200.0
+
+[node name="BaseSprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_6xlxr")
+frame_progress = 0.0
+
+[node name="Camera2D" type="Camera2D" parent="." index="4"]
+zoom = Vector2(1.406, 1.406)
+
+[node name="Respawn_Timer" type="Timer" parent="." index="7"]
+wait_time = 0.05
+one_shot = true
+
+[node name="UI" parent="." index="9" instance=ExtResource("4_glqtp")]
+
+[node name="In_Game_UI" type="CanvasLayer" parent="." index="10"]
+visible = false
+
+[node name="HumanGibTorso" type="Sprite2D" parent="In_Game_UI" index="0"]
+position = Vector2(974, 56)
+texture = ExtResource("5_j55q2")
+
+[node name="HumanGibHead" type="Sprite2D" parent="In_Game_UI/HumanGibTorso" index="0"]
+position = Vector2(0, -14)
+texture = ExtResource("6_e5di4")
+
+[node name="MonkeyActive" type="Sprite2D" parent="In_Game_UI" index="1"]
+z_index = 500
+z_as_relative = false
+position = Vector2(1072, 52)
+texture = ExtResource("4_ay3ix")
+
+[node name="BandCounter" type="Label" parent="In_Game_UI" index="2"]
+z_index = 500
+z_as_relative = false
+offset_left = 1089.0
+offset_top = 42.0
+offset_right = 1129.0
+offset_bottom = 68.0
+text = "x 0"
+
+[node name="EnemyWaveCounter" type="Label" parent="In_Game_UI" index="3"]
+z_index = 500
+z_as_relative = false
+offset_left = 986.0
+offset_top = 41.0
+offset_right = 1026.0
+offset_bottom = 67.0
+text = "x 0"
+
+[node name="TimeCounter" type="Label" parent="In_Game_UI" index="4"]
+z_index = 500
+z_as_relative = false
+offset_left = 550.0
+offset_top = 46.0
+offset_right = 590.0
+offset_bottom = 72.0
+scale = Vector2(2.54058, 2.31574)
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." index="11"]
+
+[connection signal="timeout" from="Respawn_Timer" to="." method="_on_respawn_timer_timeout"]
+[connection signal="game_started" from="UI" to="." method="_on_ui_game_started"]
