@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvdk5gxtoww8g"]
+[gd_scene load_steps=7 format=3 uid="uid://cvdk5gxtoww8g"]
 
 [ext_resource type="Texture2D" uid="uid://usuxqg0h064v" path="res://assets/tree.png" id="1_4k8hn"]
-[ext_resource type="Script" path="res://src/tree.gd" id="1_gt7q5"]
+[ext_resource type="Script" uid="uid://c02ae6a70myo3" path="res://src/tree.gd" id="1_gt7q5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6roxh"]
+friction = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uchya"]
 radius = 4.0
@@ -26,11 +29,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0hf7e"]
 _data = {
-"tree": SubResource("Animation_aqrn4")
+&"tree": SubResource("Animation_aqrn4")
 }
 
 [node name="StaticBody2D" type="StaticBody2D"]
 collision_layer = 16
+physics_material_override = SubResource("PhysicsMaterial_6roxh")
 script = ExtResource("1_gt7q5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -45,10 +49,10 @@ position = Vector2(1, -33)
 texture = ExtResource("1_4k8hn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tree"]
-autoplay = "tree"
 libraries = {
-"": SubResource("AnimationLibrary_0hf7e")
+&"": SubResource("AnimationLibrary_0hf7e")
 }
+autoplay = "tree"
 
 [node name="Banana_spawn_timer" type="Timer" parent="."]
 wait_time = 6.261

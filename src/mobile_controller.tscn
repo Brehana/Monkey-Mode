@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpma0exe0lg8f"]
+
+[ext_resource type="Script" uid="uid://ncv3t6w76sdf" path="res://src/mobile_controller.gd" id="1_yc185"]
+
+[node name="MobileController" type="CanvasLayer"]
+
+[node name="TouchArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1155.0
+offset_bottom = 648.0
+script = ExtResource("1_yc185")
+max_drag_distance = 100.0
+drag_sensitivity = 50.0

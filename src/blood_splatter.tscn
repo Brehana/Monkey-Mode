@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://pr70xi5qkwwj"]
 
-[ext_resource type="Shader" path="res://src/TeamColorMask.gdshader" id="1_lnq6j"]
+[ext_resource type="Shader" uid="uid://d4lctdw1jbnl4" path="res://src/TeamColorMask.gdshader" id="1_lnq6j"]
 [ext_resource type="Texture2D" uid="uid://ca3gvy68jd6g8" path="res://assets/bluePiece.png" id="2_p7spq"]
-[ext_resource type="Script" path="res://src/blood_splatter.gd" id="3_f65ho"]
+[ext_resource type="Script" uid="uid://b2607vewpwjfd" path="res://src/blood_splatter.gd" id="3_f65ho"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4wdx"]
 shader = ExtResource("1_lnq6j")

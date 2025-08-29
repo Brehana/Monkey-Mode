@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://k4warfdubc8"]
+[gd_scene load_steps=11 format=3 uid="uid://k4warfdubc8"]
 
 [ext_resource type="PackedScene" uid="uid://bn1witksaoc2t" path="res://src/monkey.tscn" id="1_d8xew"]
 [ext_resource type="PackedScene" uid="uid://h0y4c7icty7v" path="res://src/player_character.tscn" id="3_5l85u"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bj2qutvf5knp2" path="res://src/monkey_spawn_point.tscn" id="8_ooaww"]
 [ext_resource type="AudioStream" uid="uid://eoyojt03fou6" path="res://assets/audio/soft-rain-ambient-111154.mp3" id="8_pqjaa"]
 [ext_resource type="Texture2D" uid="uid://b3bu6jwuvkhe6" path="res://assets/Dot.png" id="8_t16r6"]
+[ext_resource type="PackedScene" uid="uid://cpma0exe0lg8f" path="res://src/mobile_controller.tscn" id="9_eipks"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iocqa"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -101,6 +104,12 @@ position = Vector2(435, 1160)
 
 [node name="player_character" parent="." instance=ExtResource("3_5l85u")]
 position = Vector2(1077, 945)
+physics_material_override = SubResource("PhysicsMaterial_iocqa")
+inertia = 2.42
+can_sleep = false
+contact_monitor = false
+max_contacts_reported = 10
+linear_damp = 23.203
 
 [node name="forest" parent="." instance=ExtResource("5_o1q1g")]
 
@@ -163,9 +172,9 @@ scale = Vector2(0.240005, 0.240005)
 [node name="Rain" type="CPUParticles2D" parent="."]
 position = Vector2(1022, 1)
 amount = 256
+texture = ExtResource("8_t16r6")
 lifetime = 2.0
 lifetime_randomness = 1.0
-texture = ExtResource("8_t16r6")
 emission_shape = 3
 emission_rect_extents = Vector2(1000, 1)
 scale_amount_min = 0.0
@@ -177,3 +186,11 @@ stream = ExtResource("8_pqjaa")
 volume_db = -0.071
 autoplay = true
 max_distance = 5000.0
+
+[node name="MobileController" parent="." instance=ExtResource("9_eipks")]
+layer = 0
+
+[node name="CanvasLayer" parent="." instance=ExtResource("9_eipks")]
+layer = 2
+
+[connection signal="body_entered" from="player_character" to="player_character" method="_on_body_entered"]

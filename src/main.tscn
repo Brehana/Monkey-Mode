@@ -1,16 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://l7pmawlpg8up"]
+[gd_scene load_steps=7 format=3 uid="uid://l7pmawlpg8up"]
 
-[ext_resource type="Script" path="res://src/main.gd" id="1_4ordp"]
+[ext_resource type="Script" uid="uid://3xj1gf7lwq7i" path="res://src/main.gd" id="1_4ordp"]
 [ext_resource type="AudioStream" uid="uid://db5wkwn7mambi" path="res://assets/audio/background-drum-and-bass-117717.mp3" id="2_utrpr"]
 [ext_resource type="AudioStream" uid="uid://denpr13d3iajf" path="res://assets/audio/new-plateau-10309.mp3" id="3_6rlig"]
 [ext_resource type="AudioStream" uid="uid://cpf7srh6fir4v" path="res://assets/audio/goodresult-82807.mp3" id="4_1thoo"]
+[ext_resource type="AudioStream" uid="uid://bi21wm45ogvbw" path="res://assets/audio/uprising.mp3" id="4_tstvg"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kbeom"]
-streams_count = 2
+streams_count = 3
 stream_0/stream = ExtResource("2_utrpr")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("3_6rlig")
-stream_1/weight = 1.0
+stream_2/stream = ExtResource("4_tstvg")
 
 [node name="Node" type="Node"]
 script = ExtResource("1_4ordp")

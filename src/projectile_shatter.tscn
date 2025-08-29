@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbkpag4dstjmc"]
 
 [ext_resource type="Texture2D" uid="uid://b3bu6jwuvkhe6" path="res://assets/Dot.png" id="1_4o4a6"]
-[ext_resource type="Script" path="res://src/projectile_shatter.gd" id="2_nulnx"]
+[ext_resource type="Script" uid="uid://uu07x5yrftse" path="res://src/projectile_shatter.gd" id="2_nulnx"]
 
 [node name="projectile_shatter" type="CPUParticles2D"]
 z_index = 3

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://clnqs2vs81j4r"]
 
-[ext_resource type="Script" path="res://src/enemy.gd" id="1_jenyl"]
+[ext_resource type="Script" uid="uid://eu5pxdy8vvlq" path="res://src/enemy.gd" id="1_jenyl"]
 [ext_resource type="Texture2D" uid="uid://816qvyfdpw3q" path="res://assets/human1.png" id="2_s0v5v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0dya"]
@@ -41,8 +41,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5i2xh"]
 _data = {
-"RESET": SubResource("Animation_a4fol"),
-"TakeDamage": SubResource("Animation_2dokl")
+&"RESET": SubResource("Animation_a4fol"),
+&"TakeDamage": SubResource("Animation_2dokl")
 }
 
 [node name="enemy" type="RigidBody2D"]
